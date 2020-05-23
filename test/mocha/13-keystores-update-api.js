@@ -224,10 +224,9 @@ describe('keystores APIs', () => {
       let result;
       const config = clone(mockConfigAlpha);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
-        result = await keystores.update({config});
+        result = await keystores.update({config, allowControllerUpdate: true});
       } catch(e) {
         err = e;
       }
@@ -235,15 +234,44 @@ describe('keystores APIs', () => {
       result.should.be.a('boolean');
       result.should.be.true;
     });
+    it('throws error when allowControllerUpdate is false', async () => {
+      let err;
+      let result;
+      const config = clone(mockConfigAlpha);
+      config.sequence++;
+      config.controller = 'someOtherController';
+      try {
+        result = await keystores.update({config, allowControllerUpdate: false});
+      } catch(e) {
+        err = e;
+      }
+      should.not.exist(result);
+      should.exist(err);
+      err.message.should.contain('Could not update keystore configuration.');
+    });
+    it('throws error when allowControllerUpdate is missing', async () => {
+      let err;
+      let result;
+      const config = clone(mockConfigAlpha);
+      config.sequence++;
+      config.controller = 'someOtherController';
+      try {
+        result = await keystores.update({config});
+      } catch(e) {
+        err = e;
+      }
+      should.not.exist(result);
+      should.exist(err);
+      err.message.should.contain('Could not update keystore configuration.');
+    });
     it('successfully updates a keystore twice', async () => {
       let err;
       let result;
       const config = clone(mockConfigBeta);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
-        result = await keystores.update({config});
+        result = await keystores.update({config, allowControllerUpdate: true});
       } catch(e) {
         err = e;
       }
@@ -253,12 +281,11 @@ describe('keystores APIs', () => {
 
       // update same config again
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController2';
       result = undefined;
       err = undefined;
       try {
-        result = await keystores.update({config});
+        result = await keystores.update({config, allowControllerUpdate: true});
       } catch(e) {
         err = e;
       }
@@ -271,10 +298,9 @@ describe('keystores APIs', () => {
       let result;
       const config = clone(mockConfigGamma);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
-        result = await keystores.update({config});
+        result = await keystores.update({config, allowControllerUpdate: true});
       } catch(e) {
         err = e;
       }
@@ -285,7 +311,6 @@ describe('keystores APIs', () => {
       // update same config again without updating the sequence number
       // config.sequence++;
 
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController2';
       result = undefined;
       err = undefined;
