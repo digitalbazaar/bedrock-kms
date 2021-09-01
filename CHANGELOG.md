@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 7.0.1 - 2021-09-xx
+
+### Fixed
+- Fix typo in controller+referenceId index.
+
 ## 7.0.0 - 2021-07-22
 
 ### Added
