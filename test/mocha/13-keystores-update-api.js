@@ -56,7 +56,6 @@ describe('keystores APIs', () => {
       let result;
       const config = clone(mockConfigAlpha);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
         result = await keystores.update({config});
@@ -72,7 +71,6 @@ describe('keystores APIs', () => {
       let result;
       const config = clone(mockConfigBeta);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
         result = await keystores.update({config});
@@ -85,7 +83,6 @@ describe('keystores APIs', () => {
 
       // update same config again
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController2';
       result = undefined;
       err = undefined;
@@ -103,7 +100,6 @@ describe('keystores APIs', () => {
       let result;
       const config = clone(mockConfigGamma);
       config.sequence++;
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController';
       try {
         result = await keystores.update({config});
@@ -117,7 +113,6 @@ describe('keystores APIs', () => {
       // update same config again without updating the sequence number
       // config.sequence++;
 
-      // FIXME: should updating controller be allowed?
       config.controller = 'someOtherController2';
       result = undefined;
       err = undefined;
