@@ -7,6 +7,8 @@ const brKms = require('bedrock-kms');
 const {runOperation} = require('webkms-switch');
 const {util: {clone}} = require('bedrock');
 const {generateId} = require('bnid');
+const database = require('bedrock-mongodb');
+const {promisify} = require('util');
 
 exports.generateKey = async ({mockData, type}) => {
   // create a keystore
@@ -28,4 +30,18 @@ exports.generateKey = async ({mockData, type}) => {
     keystore,
     key: await runOperation({operation, keystore, moduleManager})
   };
+};
+
+exports.prepareDatabase = async () => {
+  await exports.removeCollections();
+};
+
+exports.removeCollections = async (
+  collectionNames = [
+    'kms-keystore',
+  ]) => {
+  await promisify(database.openCollections)(collectionNames);
+  for(const collectionName of collectionNames) {
+    await database.collections[collectionName].deleteMany({});
+  }
 };
