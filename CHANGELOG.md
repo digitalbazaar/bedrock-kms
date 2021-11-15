@@ -1,6 +1,7 @@
 # bedrock-kms ChangeLog
 
 ## 7.1.0 - TBD
+
 ### Added
 - Added optional `explain` param to get more details about database performance.
 - Added database tests in order to check database performance.
