@@ -77,7 +77,7 @@ describe('Keystores Database Tests', () => {
       });
     it(`is properly indexed for 'config.id' in _getUncachedRecord()`,
       async () => {
-        const {executionStats} = await keystores._helpers._getUncachedRecord({
+        const {executionStats} = await keystores._getUncachedRecord({
           id: mockConfigAlpha.id,
           explain: true
         });
