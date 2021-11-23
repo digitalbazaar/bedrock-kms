@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 7.2.0 - 2021-11-xx
+## 7.2.0 - 2021-11-22
 
 ### Added
 - Add `aggregate` function option for `getStorageUsage` to allow custom
