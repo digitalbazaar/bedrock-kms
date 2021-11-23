@@ -1,5 +1,12 @@
 # bedrock-kms ChangeLog
 
+## 7.2.0 - 2021-11-xx
+
+### Added
+- Add `aggregate` function option for `getStorageUsage` to allow custom
+  aggregation of additional usage information. This is used, for example,
+  by `bedrock-kms-http` to store zcap revocation storage usage.
+
 ## 7.1.0 - 2021-11-15
 
 ### Added
