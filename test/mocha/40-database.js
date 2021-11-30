@@ -49,8 +49,7 @@ describe('Keystores Database Tests', () => {
       executionStats.executionStages.inputStage.keyPattern
         .should.eql({'config.controller': 1});
     });
-    it(`is properly indexed for 'config.id', 'config.sequence' and ` +
-      `'config.kmsModule' in update()`, async () => {
+    it(`is properly indexed for 'config.id' in update()`, async () => {
       mockConfigAlpha.sequence += 1;
       const {executionStats} = await keystores.update({
         config: mockConfigAlpha,
