@@ -45,8 +45,9 @@ describe('Keystores Database Tests', () => {
       executionStats.nReturned.should.equal(2);
       executionStats.totalKeysExamined.should.equal(2);
       executionStats.totalDocsExamined.should.equal(2);
-      executionStats.executionStages.inputStage.stage
-        .should.equal('IXSCAN');
+      executionStats.executionStages.inputStage.stage.should.equal('IXSCAN');
+      executionStats.executionStages.inputStage.keyPattern
+        .should.eql({'config.controller': 1});
     });
     it(`is properly indexed for 'config.id', 'config.sequence' and ` +
       `'config.kmsModule' in update()`, async () => {
@@ -60,8 +61,10 @@ describe('Keystores Database Tests', () => {
       executionStats.totalDocsExamined.should.equal(1);
       executionStats.executionStages.inputStage.inputStage.stage
         .should.equal('IXSCAN');
+      executionStats.executionStages.inputStage.inputStage.keyPattern
+        .should.eql({'config.id': 1});
     });
-    it(`is properly indexed for 'config.meter' in getStorageUsage()`,
+    it(`is properly indexed for 'config.meterId' in getStorageUsage()`,
       async () => {
         // finds all records that match the 'config.meter' query since it is
         // a non unique index.
@@ -74,6 +77,8 @@ describe('Keystores Database Tests', () => {
         executionStats.totalDocsExamined.should.equal(2);
         executionStats.executionStages.inputStage.inputStage.stage
           .should.equal('IXSCAN');
+        executionStats.executionStages.inputStage.inputStage.keyPattern
+          .should.eql({'config.meterId': 1});
       });
     it(`is properly indexed for 'config.id' in _getUncachedRecord()`,
       async () => {
@@ -86,7 +91,8 @@ describe('Keystores Database Tests', () => {
         executionStats.totalDocsExamined.should.equal(1);
         executionStats.executionStages.inputStage.inputStage.inputStage.stage
           .should.equal('IXSCAN');
+        executionStats.executionStages.inputStage.inputStage.inputStage
+          .keyPattern.should.eql({'config.id': 1});
       });
-
   });
 });
