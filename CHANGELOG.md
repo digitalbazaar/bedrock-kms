@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 7.3.0 - TBD
+
+### Changed
+- Changed `getStorageUsage` to use `p-limit` for handling max concurrency.
+
 ## 7.2.0 - 2021-11-22
 
 ### Added

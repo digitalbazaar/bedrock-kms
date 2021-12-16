@@ -56,5 +56,34 @@ describe('keystores APIs', () => {
       result.should.be.an('object');
       result.should.deep.equal({storage: 2});
     });
+    it('gets custom storage usage for a keystore when max concurrency is ' +
+      'reached', async () => {
+      let err;
+      let result;
+      for(let i = 3; i < 54; i++) {
+        const config = {
+          id: `https://example.com/keystores/usage-test${i}`,
+          controller: 'usage-test',
+          kmsModule: 'ssm-v1',
+          sequence: 0,
+          meterId: `usage-meter-3`
+        };
+        await keystores.insert({config});
+      }
+      try {
+        result = await keystores.getStorageUsage({
+          meterId: 'usage-meter-3', moduleManager,
+          async aggregate({usage}) {
+            usage.storage++;
+          }
+        });
+      } catch(e) {
+        err = e;
+      }
+      assertNoError(err);
+      should.exist(result);
+      result.should.be.an('object');
+      result.should.deep.equal({storage: 102});
+    });
   }); // end getStorageUsage API
 }); // end keystore APIs
