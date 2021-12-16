@@ -61,7 +61,8 @@ describe('keystores APIs', () => {
       let err;
       let result;
       // 54 is used in order to have a counters.length of 102 to ensure max
-      // concurrency of 100 is reached
+      // concurrency of 100 (`USAGE_COUNTER_MAX_CONCURRENCY`) is reached;
+      // if this max concurrency changes, this test will need to change too
       for(let i = 3; i < 54; i++) {
         const config = {
           id: `https://example.com/keystores/usage-test${i}`,
