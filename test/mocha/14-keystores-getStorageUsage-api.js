@@ -88,5 +88,34 @@ describe('keystores APIs', () => {
       result.should.be.an('object');
       result.should.deep.equal({storage: 102});
     });
+    it('aborts computing metered storage', async () => {
+      let err;
+      let result;
+      const config = {
+        id: 'https://example.com/keystores/usage-test55',
+        controller: 'usage-test',
+        kmsModule: 'ssm-v1',
+        sequence: 0,
+        meterId: 'usage-meter-55'
+      };
+      try {
+        await keystores.insert({config});
+        result = await keystores.getStorageUsage({
+          signal: {
+            abort: true
+          },
+          meterId: 'usage-meter-55', moduleManager,
+          async aggregate({usage}) {
+            usage.storage++;
+          }
+        });
+      } catch(e) {
+        err = e;
+      }
+
+      should.exist(err);
+      should.not.exist(result);
+      err.name.should.equal('AbortError');
+    });
   }); // end getStorageUsage API
 }); // end keystore APIs
