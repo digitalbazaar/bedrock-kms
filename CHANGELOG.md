@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 7.3.1 - TBD
+
+### Fixed
+- Fixed bug with `p-limit` error handling in `getStorageUsage`.
+
 ## 7.3.0 - 2021-12-16
 
 ### Changed
