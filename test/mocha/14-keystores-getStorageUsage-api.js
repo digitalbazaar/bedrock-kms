@@ -60,6 +60,8 @@ describe('keystores APIs', () => {
       'reached', async () => {
       let err;
       let result;
+      // 54 is used in order to have a counters.length of 102 to ensure max
+      // concurrency of 100 is reached
       for(let i = 3; i < 54; i++) {
         const config = {
           id: `https://example.com/keystores/usage-test${i}`,
