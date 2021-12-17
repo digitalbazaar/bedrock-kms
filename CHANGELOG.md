@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 7.4.0 - TBD
+## 7.4.0 - 2021-12-17
 
 ### Changed
 - Replace `p-limit` with `p-all`.
