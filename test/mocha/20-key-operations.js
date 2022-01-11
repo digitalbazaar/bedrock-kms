@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
@@ -7,7 +7,7 @@ const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
-const {runOperation} = require('webkms-switch');
+const {runOperation} = require('@digitalbazaar/webkms-switch');
 const moduleManager = brKms.defaultModuleManager;
 
 describe('bedrock-kms', () => {
@@ -16,6 +16,7 @@ describe('bedrock-kms', () => {
       it('successfully generates a Ed25519VerificationKey2018', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
+          controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
         const operation = clone(
@@ -30,13 +31,18 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        result.should.have.keys(['@context', 'id', 'publicKeyBase58', 'type']);
-        result.type.should.equal(operation.invocationTarget.type);
-        result.publicKeyBase58.should.be.a('string');
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['keyId', 'keyDescription']);
+        const {keyDescription} = result.result;
+        keyDescription.should.have.keys(
+          ['@context', 'id', 'publicKeyBase58', 'type', 'controller']);
+        keyDescription.type.should.equal(operation.invocationTarget.type);
+        keyDescription.publicKeyBase58.should.be.a('string');
       });
       it('successfully generates a Ed25519VerificationKey2020', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
+          controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
         const operation = clone(
@@ -51,14 +57,18 @@ describe('bedrock-kms', () => {
         }
         assertNoError(error);
         should.exist(result);
-        result.should.have.keys(
-          ['@context', 'id', 'publicKeyMultibase', 'type']);
-        result.type.should.equal(operation.invocationTarget.type);
-        result.publicKeyMultibase.should.be.a('string');
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['keyId', 'keyDescription']);
+        const {keyDescription} = result.result;
+        keyDescription.should.have.keys(
+          ['@context', 'id', 'publicKeyMultibase', 'type', 'controller']);
+        keyDescription.type.should.equal(operation.invocationTarget.type);
+        keyDescription.publicKeyMultibase.should.be.a('string');
       });
       it('successfully generates a Sha256HmacKey2019', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
+          controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
         const operation = clone(
@@ -74,11 +84,16 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['@context', 'id', 'type']);
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['keyId', 'keyDescription']);
+        const {keyDescription} = result.result;
+        keyDescription.should.have.keys(
+          ['@context', 'id', 'type', 'controller']);
       });
       it('successfully generates a AesKeyWrappingKey2019', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
+          controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
         const operation = clone(
@@ -94,11 +109,16 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['@context', 'id', 'type']);
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['keyId', 'keyDescription']);
+        const {keyDescription} = result.result;
+        keyDescription.should.have.keys(
+          ['@context', 'id', 'type', 'controller']);
       });
       it('throws on UnknownKeyType', async () => {
         const keystore = {
           id: 'https://example.com/keystores/x',
+          controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
         const operation = clone(
@@ -134,9 +154,10 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['signatureValue']);
-        should.exist(result.signatureValue);
-        const {signatureValue} = result;
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['signatureValue']);
+        should.exist(result.result.signatureValue);
+        const {signatureValue} = result.result;
         signatureValue.should.be.a('string');
       });
       it('signs a string using Ed25519VerificationKey2020', async () => {
@@ -155,9 +176,10 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['signatureValue']);
-        should.exist(result.signatureValue);
-        const {signatureValue} = result;
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['signatureValue']);
+        should.exist(result.result.signatureValue);
+        const {signatureValue} = result.result;
         signatureValue.should.be.a('string');
       });
       it('signs a string using Sha256HmacKey2019', async () => {
@@ -176,8 +198,9 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['signatureValue']);
-        const {signatureValue} = result;
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['signatureValue']);
+        const {signatureValue} = result.result;
         signatureValue.should.be.a('string');
         signatureValue.should.have.length(43);
       });
@@ -191,7 +214,7 @@ describe('bedrock-kms', () => {
         const signOperation = clone(mockData.operations.sign);
         signOperation.invocationTarget = keyId;
         signOperation.verifyData = verifyData;
-        const {signatureValue} = await runOperation(
+        const {result: {signatureValue}} = await runOperation(
           {operation: signOperation, keystore, moduleManager});
         const verifyOperation = clone(mockData.operations.verify);
         verifyOperation.invocationTarget = keyId;
@@ -208,8 +231,9 @@ describe('bedrock-kms', () => {
         assertNoError(error);
         should.exist(result);
         result.should.be.an('object');
-        result.should.have.keys(['verified']);
-        result.verified.should.be.true;
+        result.should.have.keys(['keyId', 'result']);
+        result.result.should.have.keys(['verified']);
+        result.result.verified.should.be.true;
       });
     }); // end VerifyOperation
   }); // end runOperation API

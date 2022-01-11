@@ -1,10 +1,10 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
 const brKms = require('bedrock-kms');
-const {runOperation} = require('webkms-switch');
+const {runOperation} = require('@digitalbazaar/webkms-switch');
 const {util: {clone}} = require('bedrock');
 const {generateId} = require('bnid');
 const database = require('bedrock-mongodb');
@@ -15,7 +15,7 @@ exports.generateKey = async ({mockData, type}) => {
   const mockKeystoreId = `https://example.com/keystore/${await generateId()}`;
   const keystore = {
     id: mockKeystoreId,
-    controller: 'foo',
+    controller: 'urn:foo',
     kmsModule: 'ssm-v1',
     sequence: 0,
   };
@@ -26,9 +26,10 @@ exports.generateKey = async ({mockData, type}) => {
   operation.invocationTarget.id = keyId;
   operation.invocationTarget.type = type;
   const moduleManager = brKms.defaultModuleManager;
+  const {result} = await runOperation({operation, keystore, moduleManager});
   return {
     keystore,
-    key: await runOperation({operation, keystore, moduleManager})
+    key: result.keyDescription
   };
 };
 

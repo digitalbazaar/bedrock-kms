@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 8.0.0 - 2022-01-xx
+
+### Changed
+- **BREAKING**: Require bedrock-did-io@5. This change effectively pulls in
+  the latest did-veres-one driver which ultimately uses zcap@7.
+
 ## 7.4.0 - 2021-12-17
 
 ### Changed

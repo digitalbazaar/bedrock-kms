@@ -30,14 +30,14 @@
     "p-all": "^3.0.0"
   },
   "peerDependencies": {
-    "bedrock": "^4.1.1",
+    "bedrock": "^4.3.0",
     "bedrock-did-context": "^2.0.0",
-    "bedrock-did-io": "^4.0.0",
+    "bedrock-did-io": "^5.0.0",
     "bedrock-veres-one-context": "^11.0.0",
     "bedrock-jsonld-document-loader": "^1.0.1",
-    "bedrock-mongodb": "^8.2.0",
+    "bedrock-mongodb": "^8.4.0",
     "bedrock-package-manager": "^1.0.1",
-    "bedrock-security-context": "^4.1.0"
+    "bedrock-security-context": "^5.0.0"
   },
   "directories": {
     "lib": "./lib"

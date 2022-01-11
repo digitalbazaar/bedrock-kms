@@ -1,9 +1,9 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
-const webkmsContext = require('webkms-context');
+const webkmsContext = require('@digitalbazaar/webkms-context');
 const aesContext = require('aes-key-wrapping-2019-context');
 const hmacContext = require('sha256-hmac-key-2019-context');
 const {cryptoLd} = require('./cryptoLd.js');

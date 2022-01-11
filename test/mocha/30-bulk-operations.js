@@ -1,5 +1,5 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 'use strict';
 
@@ -7,7 +7,7 @@ const brKms = require('bedrock-kms');
 const {util: {clone, uuid}} = require('bedrock');
 const helpers = require('./helpers');
 const mockData = require('./mock.data');
-const {runOperation} = require('webkms-switch');
+const {runOperation} = require('@digitalbazaar/webkms-switch');
 const moduleManager = brKms.defaultModuleManager;
 
 describe('bulk operations', () => {
