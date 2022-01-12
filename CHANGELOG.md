@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 8.0.0 - 2022-01-xx
+## 8.0.0 - 2022-01-11
 
 ### Changed
 - **BREAKING**: Require bedrock-did-io@5. This change effectively pulls in
