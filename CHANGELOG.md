@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 8.1.0 - TBD
+## 8.1.0 - 2022-02-08
 
 ### Changed
 - Update peer dependency `bedrock-veres-one-context@12`.
