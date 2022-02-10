@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 8.2.0 - 2022-02-xx
+## 8.2.0 - 2022-02-10
 
 ### Changed
 - Use `bedrock-did-io@6`.
