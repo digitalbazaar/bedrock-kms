@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 8.3.1 - 2022-03-xx
+## 8.3.1 - 2022-03-29
 
 ### Fixed
 - Use updated `bedrock-security-context` peer dependency.
