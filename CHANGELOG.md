@@ -1,5 +1,17 @@
 # bedrock-kms ChangeLog
 
+## 8.3.0 - 2022-03-xx
+
+### Changed
+- Update peer deps:
+  - `bedrock@4.5`
+  - `bedrock-mongodb@8.5`.
+  - `bedrock-did-context@2.1`
+  - `bedrock-veres-one-context@12.1`
+  - `bedrock-jsonld-document-loader@1.3`.
+- Update internals to use esm style and use `esm.js` to
+  transpile to CommonJS.
+
 ## 8.2.0 - 2022-02-10
 
 ### Changed
