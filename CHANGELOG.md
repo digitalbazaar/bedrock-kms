@@ -7,8 +7,9 @@
   - `bedrock@4.5`
   - `bedrock-mongodb@8.5`.
   - `bedrock-did-context@2.1`
-  - `bedrock-veres-one-context@12.1`
-  - `bedrock-jsonld-document-loader@1.3`.
+  - `bedrock-package-manager@1.2`
+  - `bedrock-jsonld-document-loader@1.3`
+  - `bedrock-veres-one-context@12.1`.
 - Update internals to use esm style and use `esm.js` to
   transpile to CommonJS.
 
