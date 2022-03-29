@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "node --preserve-symlinks test.js test",
-    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-summary npm test",
-    "coverage-ci": "cross-env NODE_ENV=test nyc --reporter=lcov npm test",
+    "coverage": "cross-env NODE_ENV=test ESM_OPTIONS='{cache:false}' nyc --reporter=lcov --reporter=text-summary npm test",
+    "coverage-ci": "cross-env NODE_ENV=test ESM_OPTIONS='{cache:false}' nyc --reporter=lcovonly npm test",
     "coverage-report": "nyc report"
   },
   "dependencies": {
@@ -17,7 +17,7 @@
     "@digitalbazaar/x25519-key-agreement-key-2019": "^5.1.1",
     "@digitalbazaar/x25519-key-agreement-key-2020": "^2.0.0",
     "aes-key-wrapping-2019-context": "^1.0.3",
-    "bedrock": "^4.3.0",
+    "bedrock": "^4.5.0",
     "bedrock-did-context": "^2.0.0",
     "bedrock-did-io": "^6.0.2",
     "bedrock-jsonld-document-loader": "^1.0.1",
