@@ -10,7 +10,8 @@ const {CONTEXT_URL: WEBKMS_CONTEXT_URL} = webkmsContext;
 const {CONTEXT_URL: AES_2019_CONTEXT_URL} = aesContext;
 const {CONTEXT_URL: HMAC_2019_CONTEXT_URL} = hmacContext;
 
-export const operations = {};
+export const mockData = {};
+const operations = mockData.operations = {};
 
 const symmetric = new Map([
   ['AesKeyWrappingKey2019', AES_2019_CONTEXT_URL],

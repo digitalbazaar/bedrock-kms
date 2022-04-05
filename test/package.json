@@ -21,7 +21,7 @@
     "@bedrock/mongodb": "^9.0.0",
     "@bedrock/package-manager": "^2.0.0",
     "@bedrock/security-context": "^6.0.0",
-    "@bedrock/ssm-mongodb": "^8.0.0",
+    "@bedrock/ssm-mongodb": "^8.0.1",
     "@bedrock/test": "^7.0.0",
     "@bedrock/veres-one-context": "^13.0.0",
     "@digitalbazaar/ed25519-verification-key-2018": "^3.1.1",
