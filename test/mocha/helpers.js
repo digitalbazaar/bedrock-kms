@@ -36,7 +36,7 @@ export async function generateKey({mockData, type}) {
 }
 
 export async function prepareDatabase() {
-  await exports.removeCollections();
+  await removeCollections();
 }
 
 export async function removeCollections(collectionNames = ['kms-keystore']) {
