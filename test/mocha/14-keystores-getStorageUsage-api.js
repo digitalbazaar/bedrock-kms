@@ -1,9 +1,7 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const {keystores, defaultModuleManager: moduleManager} = require('bedrock-kms');
+import {keystores, defaultModuleManager as moduleManager} from '@bedrock/kms';
 
 describe('keystores APIs', () => {
   describe('getStorageUsage API', () => {

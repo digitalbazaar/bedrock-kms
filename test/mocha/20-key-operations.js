@@ -1,14 +1,15 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const brKms = require('bedrock-kms');
-const {util: {clone, uuid}} = require('bedrock');
-const helpers = require('./helpers');
-const mockData = require('./mock.data');
+import * as bedrock from '@bedrock/core';
+import * as helpers from './helpers.js';
+import {createRequire} from 'module';
+import {defaultModuleManager as moduleManager} from '@bedrock/kms';
+import {mockData} from './mock.data.js';
+const require = createRequire(import.meta.url);
 const {runOperation} = require('@digitalbazaar/webkms-switch');
-const moduleManager = brKms.defaultModuleManager;
+
+const {util: {clone, uuid}} = bedrock;
 
 describe('bedrock-kms', () => {
   describe('integration with runOperation API', () => {

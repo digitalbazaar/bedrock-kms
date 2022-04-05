@@ -1,10 +1,9 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const {keystores} = require('bedrock-kms');
-const {util: {clone}} = require('bedrock');
+import * as bedrock from '@bedrock/core';
+import {keystores} from '@bedrock/kms';
+const {util: {clone}} = bedrock;
 
 describe('keystores APIs', () => {
   const mockConfigAlpha = {

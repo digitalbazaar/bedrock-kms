@@ -1,11 +1,9 @@
-/*
- * Copyright (c) 2019-2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+import * as bedrock from '@bedrock/core';
+import '@bedrock/kms';
+import '@bedrock/ssm-mongodb';
+import '@bedrock/test';
 
-const bedrock = require('bedrock');
-require('bedrock-kms');
-require('bedrock-ssm-mongodb');
-
-require('bedrock-test');
 bedrock.start();

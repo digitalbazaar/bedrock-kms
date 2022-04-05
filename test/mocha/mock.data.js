@@ -1,18 +1,16 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const webkmsContext = require('@digitalbazaar/webkms-context');
-const aesContext = require('aes-key-wrapping-2019-context');
-const hmacContext = require('sha256-hmac-key-2019-context');
-const {cryptoLd} = require('./cryptoLd.js');
+import * as webkmsContext from '@digitalbazaar/webkms-context';
+import * as aesContext from 'aes-key-wrapping-2019-context';
+import * as hmacContext from 'sha256-hmac-key-2019-context';
+import {cryptoLd} from './cryptoLd.js';
 
 const {CONTEXT_URL: WEBKMS_CONTEXT_URL} = webkmsContext;
 const {CONTEXT_URL: AES_2019_CONTEXT_URL} = aesContext;
 const {CONTEXT_URL: HMAC_2019_CONTEXT_URL} = hmacContext;
 
-const operations = exports.operations = {};
+export const operations = {};
 
 const symmetric = new Map([
   ['AesKeyWrappingKey2019', AES_2019_CONTEXT_URL],

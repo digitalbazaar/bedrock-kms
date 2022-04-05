@@ -1,5 +1,13 @@
 # bedrock-kms ChangeLog
 
+## 9.0.0 - 2022-04-xx
+
+### Changed
+- **BREAKING**: Rename package to `@bedrock/kms`.
+- **BREAKING**: Convert to module (ESM).
+- **BREAKING**: Remove default export.
+- **BREAKING**: Require node 14.x.
+
 ## 8.3.1 - 2022-03-29
 
 ### Fixed
