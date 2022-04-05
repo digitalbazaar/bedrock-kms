@@ -1,8 +1,8 @@
 /*!
  * Copyright (c) 2018-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import {keystores} from '@bedrock/kms';
 import * as helpers from './helpers.js';
+import {keystores} from '@bedrock/kms';
 
 describe('Keystores Database Tests', () => {
   describe('Indexes', async () => {
