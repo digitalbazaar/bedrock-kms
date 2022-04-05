@@ -5,7 +5,6 @@ import * as bedrock from '@bedrock/core';
 import * as brKms from '@bedrock/kms';
 import * as database from '@bedrock/mongodb';
 import {createRequire} from 'module';
-import {promisify} from 'util';
 const require = createRequire(import.meta.url);
 const {runOperation} = require('@digitalbazaar/webkms-switch');
 const {generateId} = require('bnid');
@@ -40,7 +39,7 @@ export async function prepareDatabase() {
 }
 
 export async function removeCollections(collectionNames = ['kms-keystore']) {
-  await promisify(database.openCollections)(collectionNames);
+  await database.openCollections(collectionNames);
   for(const collectionName of collectionNames) {
     await database.collections[collectionName].deleteMany({});
   }
