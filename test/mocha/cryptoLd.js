@@ -1,8 +1,8 @@
 /*!
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
+import {createRequire} from 'module';
+const require = createRequire(import.meta.url);
 const {CryptoLD} = require('crypto-ld');
 const {Ed25519VerificationKey2018} =
   require('@digitalbazaar/ed25519-verification-key-2018');
@@ -19,4 +19,4 @@ cryptoLd.use(Ed25519VerificationKey2020);
 cryptoLd.use(X25519KeyAgreementKey2019);
 cryptoLd.use(X25519KeyAgreementKey2020);
 
-module.exports = {cryptoLd};
+export {cryptoLd};

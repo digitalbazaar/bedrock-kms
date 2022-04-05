@@ -1,10 +1,7 @@
-/*
- * Copyright (c) 2021 Digital Bazaar, Inc. All rights reserved.
+/*!
+ * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const brKms = require('bedrock-kms');
-const documentLoader = brKms.defaultDocumentLoader;
+import {defaultDocumentLoader as documentLoader} from '@bedrock/kms';
 
 describe('defaultDocumentLoader', () => {
   it('returns a did document from the document loader', async () => {

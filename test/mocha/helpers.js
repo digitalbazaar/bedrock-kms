@@ -1,16 +1,18 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
-
-const brKms = require('bedrock-kms');
+import * as bedrock from '@bedrock/core';
+import * as brKms from '@bedrock/kms';
+import * as database from '@bedrock/mongodb';
+import {createRequire} from 'module';
+import {promisify} from 'util';
+const require = createRequire(import.meta.url);
 const {runOperation} = require('@digitalbazaar/webkms-switch');
-const {util: {clone}} = require('bedrock');
 const {generateId} = require('bnid');
-const database = require('bedrock-mongodb');
-const {promisify} = require('util');
 
-exports.generateKey = async ({mockData, type}) => {
+const {util: {clone}} = bedrock;
+
+export async function generateKey({mockData, type}) {
   // create a keystore
   const mockKeystoreId = `https://example.com/keystore/${await generateId()}`;
   const keystore = {
@@ -31,18 +33,15 @@ exports.generateKey = async ({mockData, type}) => {
     keystore,
     key: result.keyDescription
   };
-};
+}
 
-exports.prepareDatabase = async () => {
+export async function prepareDatabase() {
   await exports.removeCollections();
-};
+}
 
-exports.removeCollections = async (
-  collectionNames = [
-    'kms-keystore',
-  ]) => {
+export async function removeCollections(collectionNames = ['kms-keystore']) {
   await promisify(database.openCollections)(collectionNames);
   for(const collectionName of collectionNames) {
     await database.collections[collectionName].deleteMany({});
   }
-};
+}
