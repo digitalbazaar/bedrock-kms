@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/kms",
-  "version": "8.3.2-0",
+  "version": "9.0.0",
   "type": "module",
   "description": "Key management for Bedrock applications",
   "main": "./lib/index.js",
