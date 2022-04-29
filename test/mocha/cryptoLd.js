@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2021-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import {createRequire} from 'module';
+import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url);
 const {CryptoLD} = require('crypto-ld');
 const {Ed25519VerificationKey2018} =

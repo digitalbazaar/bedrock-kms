@@ -1,9 +1,8 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import * as bedrock from '@bedrock/core';
 import {keystores} from '@bedrock/kms';
-const {util: {clone}} = bedrock;
+import {klona} from 'klona';
 
 describe('keystores APIs', () => {
   const mockConfigAlpha = {
@@ -53,7 +52,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore', async () => {
       let err;
       let result;
-      const config = clone(mockConfigAlpha);
+      const config = klona(mockConfigAlpha);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -68,7 +67,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore twice', async () => {
       let err;
       let result;
-      const config = clone(mockConfigBeta);
+      const config = klona(mockConfigBeta);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -97,7 +96,7 @@ describe('keystores APIs', () => {
     it('fails to updates a keystore using wrong sequence number', async () => {
       let err;
       let result;
-      const config = clone(mockConfigGamma);
+      const config = klona(mockConfigGamma);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -129,7 +128,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore and invalidates cache', async () => {
       let err;
       let result;
-      const config = clone(mockConfigBeta);
+      const config = klona(mockConfigBeta);
       config.sequence = 3;
       config.controller = 'someOtherController';
       try {
@@ -147,7 +146,7 @@ describe('keystores APIs', () => {
     it('throws error on unknown keystore id', async () => {
       let err;
       let result;
-      const config = clone(mockConfigBeta);
+      const config = klona(mockConfigBeta);
       config.sequence++;
       config.id = 'someOtherId';
       try {
