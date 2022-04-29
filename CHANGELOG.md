@@ -1,5 +1,18 @@
 # bedrock-kms ChangeLog
 
+## 10.0.0 - 2022-04-xx
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - `@bedrock/core@6`.
+  - `@bedrock/did-context@4`
+  - `@bedrock/did-io@8`
+  - `@bedrock/jsonld-document-loader@3`
+  - `@bedrock/mongodb@10`
+  - `@bedrock/package-manager@3`
+  - `@bedrock/security-context@7`
+  - `@bedrock/veres-one-context@14`.
+
 ## 9.0.0 - 2022-04-05
 
 ### Changed
