@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 10.0.0 - 2022-04-xx
+## 10.0.0 - 2022-04-29
 
 ### Changed
 - **BREAKING**: Update peer deps:
