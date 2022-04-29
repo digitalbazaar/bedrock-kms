@@ -1,15 +1,14 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import * as bedrock from '@bedrock/core';
 import * as helpers from './helpers.js';
 import {createRequire} from 'module';
 import {defaultModuleManager as moduleManager} from '@bedrock/kms';
+import {klona} from 'klona';
 import {mockData} from './mock.data.js';
+import {v4 as uuid} from 'uuid';
 const require = createRequire(import.meta.url);
 const {runOperation} = require('@digitalbazaar/webkms-switch');
-
-const {util: {clone, uuid}} = bedrock;
 
 describe('bulk operations', () => {
   describe('Ed25519VerificationKey2020', () => {
@@ -40,7 +39,7 @@ describe('bulk operations', () => {
       this.timeout(0);
       const promises = [];
       for(let i = 0; i < operationCount; ++i) {
-        const operation = clone(mockData.operations.sign);
+        const operation = klona(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
@@ -88,7 +87,7 @@ describe('bulk operations', () => {
       this.timeout(0);
       const promises = [];
       for(let i = 0; i < operationCount; ++i) {
-        const operation = clone(mockData.operations.sign);
+        const operation = klona(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
