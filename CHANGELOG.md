@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 10.2.0 - 2022-05-xx
+## 10.2.0 - 2022-05-13
 
 ### Added
 - Expose `_disableClearCacheOnUpdate` for testing cache busting only; do not use in
