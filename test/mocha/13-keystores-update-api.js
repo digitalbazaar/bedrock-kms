@@ -111,7 +111,7 @@ describe('keystores APIs', () => {
       let result;
       config.sequence++;
       config.controller = 'someOtherController';
-      let oldDelete = keystores._KEYSTORE_CONFIG_CACHE.delete;
+      const oldDelete = keystores._KEYSTORE_CONFIG_CACHE.delete;
       try {
         // remove cache delete functionality to test fresh API
         keystores._KEYSTORE_CONFIG_CACHE.delete = () => {};
