@@ -24,6 +24,12 @@ describe('keystores APIs', () => {
     controller: 'f2da13ee-50d2-46ab-865d-ee23d609edbd',
     sequence: 0,
   };
+  const mockConfigDelta = {
+    id: 'https://example.com/keystores/f9da6f23-6e13-42e9-88d3-5c03011ecbbf',
+    kmsModule: 'ssm-v1',
+    controller: '17e77da1-bb7e-4fe2-b4dd-1c4bba933d7c',
+    sequence: 0,
+  };
 
   before(async () => {
     let err;
@@ -31,6 +37,7 @@ describe('keystores APIs', () => {
       await keystores.insert({config: mockConfigAlpha});
       await keystores.insert({config: mockConfigBeta});
       await keystores.insert({config: mockConfigGamma});
+      await keystores.insert({config: mockConfigDelta});
     } catch(e) {
       err = e;
     }
@@ -92,6 +99,39 @@ describe('keystores APIs', () => {
       assertNoError(err);
       result.should.be.a('boolean');
       result.should.be.true;
+    });
+    it('successfully updates a keystore and gets a fresh value', async () => {
+      const config = klona(mockConfigDelta);
+
+      // get keystore config to prime cache
+      await keystores.get({id: config.id});
+
+      // now update config
+      let err;
+      let result;
+      config.sequence++;
+      config.controller = 'someOtherController';
+      let oldDelete = keystores._KEYSTORE_CONFIG_CACHE.delete;
+      try {
+        // remove cache delete functionality to test fresh API
+        keystores._KEYSTORE_CONFIG_CACHE.delete = () => {};
+        result = await keystores.update({config});
+      } catch(e) {
+        err = e;
+      } finally {
+        keystores._KEYSTORE_CONFIG_CACHE.delete = oldDelete;
+      }
+      assertNoError(err);
+      result.should.be.a('boolean');
+      result.should.be.true;
+
+      // get keystore config, should be stale
+      const stale = await keystores.get({id: config.id});
+      stale.config.controller.should.not.equal(config.controller);
+
+      // get fresh config
+      const fresh = await keystores.get({id: config.id, fresh: true});
+      fresh.config.controller.should.equal(config.controller);
     });
     it('fails to updates a keystore using wrong sequence number', async () => {
       let err;

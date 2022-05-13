@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 10.1.0 - 2022-05-xx
+
+### Added
+- Add `fresh` option to `keystores.get()` API to allow for retrieving a fresh
+  (not previously cached) keystore config record.
+
 ## 10.0.0 - 2022-04-29
 
 ### Changed
