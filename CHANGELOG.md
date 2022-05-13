@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 10.1.0 - 2022-05-xx
+## 10.1.0 - 2022-05-13
 
 ### Added
 - Add `fresh` option to `keystores.get()` API to allow for retrieving a fresh
