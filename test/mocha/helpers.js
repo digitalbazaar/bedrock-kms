@@ -3,11 +3,9 @@
  */
 import * as brKms from '@bedrock/kms';
 import * as database from '@bedrock/mongodb';
-import {createRequire} from 'node:module';
 import {klona} from 'klona';
-const require = createRequire(import.meta.url);
-const {runOperation} = require('@digitalbazaar/webkms-switch');
-const {generateId} = require('bnid');
+import {runOperation} from '@digitalbazaar/webkms-switch';
+import {generateId} from 'bnid';
 
 export async function generateKey({mockData, type}) {
   // create a keystore

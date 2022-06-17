@@ -2,13 +2,11 @@
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
-import {createRequire} from 'module';
 import {defaultModuleManager as moduleManager} from '@bedrock/kms';
 import {klona} from 'klona';
 import {mockData} from './mock.data.js';
 import {v4 as uuid} from 'uuid';
-const require = createRequire(import.meta.url);
-const {runOperation} = require('@digitalbazaar/webkms-switch');
+import {runOperation} from '@digitalbazaar/webkms-switch';
 
 describe('bulk operations', () => {
   describe('Ed25519VerificationKey2020', () => {

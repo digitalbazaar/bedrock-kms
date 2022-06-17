@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 11.0.0 - 2022-xx-xx
+
+### Changed
+- Update dependencies.
+  - **BREAKING**: `@bedrock/did-io@9`
+
 ## 10.3.0 - 2022-06-19
 
 ### Added
