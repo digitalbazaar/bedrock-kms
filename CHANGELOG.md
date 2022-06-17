@@ -6,6 +6,7 @@
 - Update dependencies.
   - **BREAKING**: `@bedrock/did-io@9`
 - Use `package.json` `files` field.
+- Lint module.
 
 ## 10.3.0 - 2022-06-19
 
