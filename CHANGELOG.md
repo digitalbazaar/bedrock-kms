@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 10.3.0 - 2022-06-xx
+
+### Added
+- Cache KMS module APIs as imported.
+
 ## 10.2.0 - 2022-05-13
 
 ### Added
