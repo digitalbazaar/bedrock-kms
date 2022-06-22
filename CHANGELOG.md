@@ -3,6 +3,7 @@
 ## 11.0.0 - 2022-xx-xx
 
 ### Changed
+- **BREAKING**: Require Node.js >=16.
 - Update dependencies.
   - **BREAKING**: `@bedrock/did-io@9`
 - Use `package.json` `files` field.
