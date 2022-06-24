@@ -2,11 +2,11 @@
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
-import {defaultModuleManager as moduleManager} from '@bedrock/kms';
 import {klona} from 'klona';
 import {mockData} from './mock.data.js';
-import {v4 as uuid} from 'uuid';
+import {defaultModuleManager as moduleManager} from '@bedrock/kms';
 import {runOperation} from '@digitalbazaar/webkms-switch';
+import {v4 as uuid} from 'uuid';
 
 describe('bedrock-kms', () => {
   describe('integration with runOperation API', () => {

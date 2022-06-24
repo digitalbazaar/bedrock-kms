@@ -1,9 +1,9 @@
 /*!
  * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
  */
-import * as webkmsContext from '@digitalbazaar/webkms-context';
 import * as aesContext from 'aes-key-wrapping-2019-context';
 import * as hmacContext from 'sha256-hmac-key-2019-context';
+import * as webkmsContext from '@digitalbazaar/webkms-context';
 import {cryptoLd} from './cryptoLd.js';
 
 const {CONTEXT_URL: WEBKMS_CONTEXT_URL} = webkmsContext;
