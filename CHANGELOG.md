@@ -1,5 +1,15 @@
 # bedrock-kms ChangeLog
 
+## 12.0.0 - 2022-12-dd
+
+### Removed
+- **BREAKING**: Remove the unique index (and all indexes) for `referenceId`
+  in keystore configs. This feature is not used and querying using it has
+  not been supported for some time. Existing deployments should manually
+  remove any indexes related to `referenceId`. Setting the field in the
+  config at this level is not prohibited, but it is not used internally
+  in any way.
+
 ## 11.0.0 - 2022-06-30
 
 ### Changed
