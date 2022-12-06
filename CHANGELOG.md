@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 12.0.0 - 2022-12-dd
+## 12.0.0 - 2022-12-06
 
 ### Removed
 - **BREAKING**: Remove the unique index (and all indexes) for `referenceId`
