@@ -1,5 +1,14 @@
 # bedrock-kms ChangeLog
 
+## 12.0.0 -
+
+### Changed
+- **BREAKING**: Use `@bedrock/mongodb: ^11`.
+- **BREAKING**: Use Node Mongodb Driver 4 results API.
+
+### Removed
+- Remove deprecated MongoDB index `background`.
+
 ## 11.0.0 - 2022-06-30
 
 ### Changed
