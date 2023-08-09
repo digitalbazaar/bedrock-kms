@@ -26,7 +26,7 @@
     "url": "https://github.com/digitalbazaar/bedrock-kms/issues"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
