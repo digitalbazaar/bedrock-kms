@@ -1,5 +1,10 @@
 # bedrock-kms ChangeLog
 
+## 12.1.0 - 2022-08-xx
+
+### Changed
+- Use `@bedrock/did-io@10.1.0`.
+
 ## 12.0.0 - 2022-12-06
 
 ### Removed
