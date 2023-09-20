@@ -4,6 +4,11 @@
 
 ### Changed
 - Use `p-all@5`. This version requires Node.js 16+.
+- **BREAKING**: Update peer deps:
+  - Use `@bedrock/did-context@5`. This version requires Node.js 18+.
+  - Use `@bedrock/jsonld-document-loader@4`. This version requires Node.js 18+.
+  - Use `@bedrock/security-context@8`. This version requires Node.js 18+.
+  - Use `@bedrock/veres-one-context@15`. This version requires Node.js 18+.
 
 ## 13.0.0 - 2022-08-09
 
