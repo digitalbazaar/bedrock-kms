@@ -31,7 +31,7 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-kms",
   "dependencies": {
     "@digitalbazaar/lru-memoize": "^3.0.0",
-    "p-all": "^4.0.0"
+    "p-all": "^5.0.0"
   },
   "peerDependencies": {
     "@bedrock/core": "^6.0.1",
