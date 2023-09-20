@@ -12,18 +12,18 @@
   },
   "dependencies": {
     "@bedrock/core": "^6.0.1",
-    "@bedrock/did-context": "^4.0.0",
+    "@bedrock/did-context": "^5.0.0",
     "@bedrock/did-io": "^10.1.0",
     "@bedrock/https-agent": "^4.0.0",
-    "@bedrock/jsonld-document-loader": "^3.0.0",
+    "@bedrock/jsonld-document-loader": "^4.0.0",
     "@bedrock/kms": "file:..",
-    "@bedrock/ledger-context": "^23.0.0",
+    "@bedrock/ledger-context": "^24.0.0",
     "@bedrock/mongodb": "^10.0.0",
     "@bedrock/package-manager": "^3.0.0",
-    "@bedrock/security-context": "^7.0.0",
+    "@bedrock/security-context": "^8.0.0",
     "@bedrock/ssm-mongodb": "^10.0.0",
     "@bedrock/test": "^8.0.5",
-    "@bedrock/veres-one-context": "^14.0.1",
+    "@bedrock/veres-one-context": "^15.0.0",
     "@digitalbazaar/ed25519-verification-key-2018": "^4.0.0",
     "@digitalbazaar/ed25519-verification-key-2020": "^4.0.0",
     "@digitalbazaar/webkms-context": "^2.1.0",
@@ -37,7 +37,7 @@
     "crypto-ld": "^7.0.0",
     "klona": "^2.0.5",
     "sha256-hmac-key-2019-context": "^1.0.3",
-    "uuid": "^8.3.2"
+    "uuid": "^9.0.0"
   },
   "c8": {
     "excludeNodeModules": false,
