@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 14.0.0 - 2023-09-xx
+## 14.0.0 - 2023-09-20
 
 ### Changed
 - Use `p-all@5`. This version requires Node.js 16+.
