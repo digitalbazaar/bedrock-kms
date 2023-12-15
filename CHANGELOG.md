@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 15.0.0 - TBD
+
+### Changed
+- **BREAKING**: Update peer deps:
+  - Use `@bedrock/mongodb@11`. This version uses MongoDB native driver v6.
+
 ## 14.0.0 - 2023-09-20
 
 ### Changed
