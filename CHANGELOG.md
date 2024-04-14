@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 15.0.0 - 2024-04-dd
+## 15.0.0 - 2024-04-14
 
 ### Removed
 - **BREAKING**: Removed `defaultDocumentLoader` export. This export is not
