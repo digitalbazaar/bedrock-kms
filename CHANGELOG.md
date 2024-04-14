@@ -1,5 +1,19 @@
 # bedrock-kms ChangeLog
 
+## 15.0.0 - 2024-04-dd
+
+### Removed
+- **BREAKING**: Removed `defaultDocumentLoader` export. This export is not
+  used internally by this library and other libraries that use it such
+  as `@bedrock/kms-http` should provide their own document loader to avoid
+  mixing maintenance concerns with this library. As a result, the following
+  peer dependencies have also been removed:
+  - `@bedrock/did-context@5`
+  - `@bedrock/did-io@10`
+  - `@bedrock/jsonld-document-loader@4`
+  - `@bedrock/security-context@8`
+  - `@bedrock/veres-one-context@15`
+
 ## 14.0.0 - 2023-09-20
 
 ### Changed
