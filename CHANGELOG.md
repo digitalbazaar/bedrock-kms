@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 15.0.1 - 2025-mm-dd
+
+### Fixed
+- Return passed `record` instead of resulting record from mongodb calls to
+  enable using newer mongodb driver.
+
 ## 15.0.0 - 2024-04-14
 
 ### Removed
