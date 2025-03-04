@@ -6,6 +6,7 @@
 - Return passed `record` instead of resulting record from mongodb calls to
   enable using newer mongodb driver.
 - Use `result.modifiedCount` to enable newer mongodb driver.
+- Remove unused `background` option from mongodb index creation.
 
 ## 15.0.0 - 2024-04-14
 
