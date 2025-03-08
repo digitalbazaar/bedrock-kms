@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 16.0.0 - 2025-03-xx
+## 16.0.0 - 2025-03-07
 
 ### Changed
 - Update dependencies.
