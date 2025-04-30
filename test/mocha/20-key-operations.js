@@ -1,8 +1,7 @@
 /*!
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
-import {klona} from 'klona';
 import {mockData} from './mock.data.js';
 import {defaultModuleManager as moduleManager} from '@bedrock/kms';
 import {runOperation} from '@digitalbazaar/webkms-switch';
@@ -17,7 +16,7 @@ describe('bedrock-kms', () => {
           controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
-        const operation = klona(
+        const operation = structuredClone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2018'}));
         operation.invocationTarget.type = 'Ed25519VerificationKey2018';
         let error;
@@ -43,7 +42,7 @@ describe('bedrock-kms', () => {
           controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
-        const operation = klona(
+        const operation = structuredClone(
           mockData.operations.generate({type: 'Ed25519VerificationKey2020'}));
         operation.invocationTarget.type = 'Ed25519VerificationKey2020';
         let error;
@@ -69,7 +68,7 @@ describe('bedrock-kms', () => {
           controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
-        const operation = klona(
+        const operation = structuredClone(
           mockData.operations.generate({type: 'Sha256HmacKey2019'}));
         operation.invocationTarget.type = 'Sha256HmacKey2019';
         let error;
@@ -94,7 +93,7 @@ describe('bedrock-kms', () => {
           controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
-        const operation = klona(
+        const operation = structuredClone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.type = 'AesKeyWrappingKey2019';
         let error;
@@ -119,7 +118,7 @@ describe('bedrock-kms', () => {
           controller: 'urn:uuid:baa943d2-7338-11ec-b1c4-10bf48838a41',
           kmsModule: 'ssm-v1'
         };
-        const operation = klona(
+        const operation = structuredClone(
           mockData.operations.generate({type: 'AesKeyWrappingKey2019'}));
         operation.invocationTarget.type = 'UnknownKeyType';
         let error;
@@ -139,7 +138,7 @@ describe('bedrock-kms', () => {
       it('signs a string using Ed25519VerificationKey2018', async () => {
         const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2018'});
-        const operation = klona(mockData.operations.sign);
+        const operation = structuredClone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
@@ -161,7 +160,7 @@ describe('bedrock-kms', () => {
       it('signs a string using Ed25519VerificationKey2020', async () => {
         const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Ed25519VerificationKey2020'});
-        const operation = klona(mockData.operations.sign);
+        const operation = structuredClone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
@@ -183,7 +182,7 @@ describe('bedrock-kms', () => {
       it('signs a string using Sha256HmacKey2019', async () => {
         const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
-        const operation = klona(mockData.operations.sign);
+        const operation = structuredClone(mockData.operations.sign);
         operation.invocationTarget = keyId;
         operation.verifyData = uuid();
         let result;
@@ -209,12 +208,12 @@ describe('bedrock-kms', () => {
         const verifyData = uuid();
         const {keystore, key: {id: keyId}} = await helpers.generateKey(
           {mockData, type: 'Sha256HmacKey2019'});
-        const signOperation = klona(mockData.operations.sign);
+        const signOperation = structuredClone(mockData.operations.sign);
         signOperation.invocationTarget = keyId;
         signOperation.verifyData = verifyData;
         const {result: {signatureValue}} = await runOperation(
           {operation: signOperation, keystore, moduleManager});
-        const verifyOperation = klona(mockData.operations.verify);
+        const verifyOperation = structuredClone(mockData.operations.verify);
         verifyOperation.invocationTarget = keyId;
         verifyOperation.verifyData = verifyData;
         verifyOperation.signatureValue = signatureValue;

@@ -1,8 +1,7 @@
 /*!
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {keystores} from '@bedrock/kms';
-import {klona} from 'klona';
 
 describe('keystores APIs', () => {
   const mockConfigAlpha = {
@@ -58,7 +57,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore', async () => {
       let err;
       let result;
-      const config = klona(mockConfigAlpha);
+      const config = structuredClone(mockConfigAlpha);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -73,7 +72,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore twice', async () => {
       let err;
       let result;
-      const config = klona(mockConfigBeta);
+      const config = structuredClone(mockConfigBeta);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -100,7 +99,7 @@ describe('keystores APIs', () => {
       result.should.be.true;
     });
     it('successfully updates a keystore and gets a fresh value', async () => {
-      const config = klona(mockConfigDelta);
+      const config = structuredClone(mockConfigDelta);
 
       // get keystore config to prime cache
       await keystores.get({id: config.id});
@@ -135,7 +134,7 @@ describe('keystores APIs', () => {
     it('fails to updates a keystore using wrong sequence number', async () => {
       let err;
       let result;
-      const config = klona(mockConfigGamma);
+      const config = structuredClone(mockConfigGamma);
       config.sequence++;
       config.controller = 'someOtherController';
       try {
@@ -167,7 +166,7 @@ describe('keystores APIs', () => {
     it('successfully updates a keystore and invalidates cache', async () => {
       let err;
       let result;
-      const config = klona(mockConfigBeta);
+      const config = structuredClone(mockConfigBeta);
       config.sequence = 3;
       config.controller = 'someOtherController';
       try {
@@ -185,7 +184,7 @@ describe('keystores APIs', () => {
     it('throws error on unknown keystore id', async () => {
       let err;
       let result;
-      const config = klona(mockConfigBeta);
+      const config = structuredClone(mockConfigBeta);
       config.sequence++;
       config.id = 'someOtherId';
       try {

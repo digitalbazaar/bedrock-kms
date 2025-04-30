@@ -1,10 +1,9 @@
 /*!
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as brKms from '@bedrock/kms';
 import * as database from '@bedrock/mongodb';
 import {generateId} from 'bnid';
-import {klona} from 'klona';
 import {runOperation} from '@digitalbazaar/webkms-switch';
 
 export async function generateKey({mockData, type}) {
@@ -19,7 +18,7 @@ export async function generateKey({mockData, type}) {
   await brKms.keystores.insert({config: keystore});
 
   const keyId = `${mockKeystoreId}/keys/${await generateId()}`;
-  const operation = klona(mockData.operations.generate({type}));
+  const operation = structuredClone(mockData.operations.generate({type}));
   operation.invocationTarget.id = keyId;
   operation.invocationTarget.type = type;
   const moduleManager = brKms.defaultModuleManager;

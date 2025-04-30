@@ -1,8 +1,7 @@
 /*!
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
-import {klona} from 'klona';
 import {mockData} from './mock.data.js';
 import {defaultModuleManager as moduleManager} from '@bedrock/kms';
 import {runOperation} from '@digitalbazaar/webkms-switch';
@@ -37,7 +36,7 @@ describe('bulk operations', () => {
       this.timeout(0);
       const promises = [];
       for(let i = 0; i < operationCount; ++i) {
-        const operation = klona(mockData.operations.sign);
+        const operation = structuredClone(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
@@ -85,7 +84,7 @@ describe('bulk operations', () => {
       this.timeout(0);
       const promises = [];
       for(let i = 0; i < operationCount; ++i) {
-        const operation = klona(mockData.operations.sign);
+        const operation = structuredClone(mockData.operations.sign);
         operation.invocationTarget = mockKeyId;
         operation.verifyData = vData[i];
         promises.push(runOperation({
