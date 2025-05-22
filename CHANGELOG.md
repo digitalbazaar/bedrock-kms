@@ -1,5 +1,11 @@
 # bedrock-kms ChangeLog
 
+## 16.1.0 - 2025-05-dd
+
+### Changed
+- Use `@digitalbazaar/lru-memoize@4`. Existing cache defaults and options
+  are coerced from previous versions to the new version.
+
 ## 16.0.0 - 2025-03-07
 
 ### Changed
