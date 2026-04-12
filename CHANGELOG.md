@@ -1,6 +1,6 @@
 # bedrock-kms ChangeLog
 
-## 16.2.0 - 2026-04-dd
+## 16.2.0 - 2026-04-12
 
 ### Added
 - Support `getKmsModuleApi()` option on KMS modules. If a KMS module exports
